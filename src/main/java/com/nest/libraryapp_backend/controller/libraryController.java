@@ -32,5 +32,9 @@ public class libraryController {
         public  String EditBook(){
             return "This is book edit";
         }
+        @PostMapping("/issuebook")
+        public  String IssueBook(){
+            return "This is book issue";
+        }
 
 }
