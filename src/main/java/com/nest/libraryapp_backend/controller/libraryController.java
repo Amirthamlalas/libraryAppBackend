@@ -37,4 +37,9 @@ public class libraryController {
             return "This is book issue";
         }
 
+        @PostMapping("/userregister")
+        public  String UserRegister(){
+            return "This is user register";
+        }
+
 }
