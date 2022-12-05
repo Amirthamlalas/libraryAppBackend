@@ -1,5 +1,6 @@
 package com.nest.libraryapp_backend.controller;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,6 +15,10 @@ public class libraryController {
         @PostMapping("/bookentry")
         public  String BookEntry(){
             return "welcome to Book entry";
+        }
+        @GetMapping("/viewbook")
+        public  String ViewBook(){
+            return "welcome to Book view";
         }
 
 }
