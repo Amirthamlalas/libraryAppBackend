@@ -11,4 +11,9 @@ public class libraryController {
             return "welcome to adminlogin";
         }
 
+        @PostMapping("/bookentry")
+        public  String BookEntry(){
+            return "welcome to Book entry";
+        }
+
 }
