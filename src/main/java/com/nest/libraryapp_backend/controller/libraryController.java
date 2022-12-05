@@ -20,5 +20,9 @@ public class libraryController {
         public  String ViewBook(){
             return "welcome to Book view";
         }
+        @PostMapping("/searchbook")
+        public  String SearchBook(){
+            return "welcome to Book search";
+        }
 
 }
