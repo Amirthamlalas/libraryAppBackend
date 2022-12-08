@@ -27,9 +27,13 @@ private LibraryDao dao;
         public List<Library> ViewBook(){
             return (List<Library>)dao.findAll();
         }
-        @PostMapping("/searchbook")
-        public  String SearchBook(){
-            return "welcome to Book search";
+        @CrossOrigin(origins = "*")
+        @PostMapping(path = "/searchbook",consumes = "application/json",produces = "application/json")
+        public List<Library> SearchBook(@RequestBody Library l){
+            String title=String.valueOf(l.getTitle());
+            System.out.println(title);
+
+            return (List<Library>)dao.SearchBook(l.getTitle());
         }
         @PostMapping("/deletebook")
         public  String DeleteBook(){
