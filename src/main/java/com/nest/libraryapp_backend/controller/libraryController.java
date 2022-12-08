@@ -5,6 +5,7 @@ import com.nest.libraryapp_backend.model.Library;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -35,10 +36,18 @@ private LibraryDao dao;
 
             return (List<Library>)dao.SearchBook(l.getTitle());
         }
-        @PostMapping("/deletebook")
-        public  String DeleteBook(){
-            return "This is book delete";
-        }
+    @CrossOrigin(origins = "*")
+    @PostMapping(path = "/deletebook",consumes = "application/json",produces = "application/json")
+    public HashMap<String, String> DeleteBook(@RequestBody Library l){
+        String id=String.valueOf(l.getId());
+        System.out.println(id);
+        dao.DeleteBook(l.getId());
+        HashMap<String,String>map=new HashMap<>();
+        map.put("status","success");
+        return map;
+
+
+    }
         @PostMapping("/editbook")
         public  String EditBook(){
             return "This is book edit";
