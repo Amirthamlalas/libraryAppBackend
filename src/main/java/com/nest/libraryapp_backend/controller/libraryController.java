@@ -1,19 +1,23 @@
 package com.nest.libraryapp_backend.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.nest.libraryapp_backend.dao.LibraryDao;
+import com.nest.libraryapp_backend.model.Library;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class libraryController {
-
+@Autowired
+private LibraryDao dao;
         @PostMapping("/")
         public  String AdminLogin(){
             return "welcome to adminlogin";
         }
-
-        @PostMapping("/bookentry")
-        public  String BookEntry(){
+        @CrossOrigin(origins = "*")
+        @PostMapping(path = "/bookentry",consumes = "application/json",produces = "application/json")
+        public  String BookEntry(@RequestBody Library l){
+            System.out.println(l.getTitle());
+        dao.save(l);
             return "welcome to Book entry";
         }
         @GetMapping("/viewbook")
