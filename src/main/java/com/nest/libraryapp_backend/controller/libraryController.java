@@ -5,6 +5,8 @@ import com.nest.libraryapp_backend.model.Library;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class libraryController {
 @Autowired
@@ -20,9 +22,10 @@ private LibraryDao dao;
         dao.save(l);
             return "welcome to Book entry";
         }
+        @CrossOrigin(origins = "*")
         @GetMapping("/viewbook")
-        public  String ViewBook(){
-            return "welcome to Book view";
+        public List<Library> ViewBook(){
+            return (List<Library>)dao.findAll();
         }
         @PostMapping("/searchbook")
         public  String SearchBook(){
